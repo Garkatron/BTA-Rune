@@ -1,7 +1,6 @@
-package deus.rune.runes.curative;
+package deus.rune.item.runes;
 
-import deus.rune.enums.RuneDamageType;
-import deus.rune.runes.Rune;
+import deus.rune.item.runes.core.Rune;
 import net.minecraft.core.entity.player.EntityPlayer;
 
 public class Berkano extends Rune {
@@ -15,6 +14,5 @@ public class Berkano extends Rune {
 	@Override
 	public void effect(EntityPlayer player) {
 		player.heal(2);
-
 	}
 }

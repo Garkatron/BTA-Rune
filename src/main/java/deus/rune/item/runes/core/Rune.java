@@ -1,13 +1,12 @@
-package deus.rune.runes;
+package deus.rune.item.runes.core;
 
 import deus.rune.Debug.Debug;
-import deus.rune.Util;
 import deus.rune.enums.RuneEffect;
 import deus.rune.enums.RuneType;
 import deus.rune.interfaces.IRune;
 import net.minecraft.core.entity.player.EntityPlayer;
 
-import static deus.rune.Util.secondsToTicks;
+import static deus.rune.Debug.Util.secondsToTicks;
 
 public abstract class Rune implements IRune {
 

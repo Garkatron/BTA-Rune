@@ -1,6 +1,5 @@
-package deus.rune.runes;
+package deus.rune.item.runes.core;
 
-import deus.rune.enums.RuneType;
 import net.minecraft.core.entity.Entity;
 import net.minecraft.core.entity.player.EntityPlayer;
 import net.minecraft.core.item.Item;
