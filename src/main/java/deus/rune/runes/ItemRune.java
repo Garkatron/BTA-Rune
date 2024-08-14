@@ -1,5 +1,7 @@
 package deus.rune.runes;
 
+import deus.rune.enums.RuneType;
+import net.minecraft.core.entity.Entity;
 import net.minecraft.core.entity.player.EntityPlayer;
 import net.minecraft.core.item.Item;
 import net.minecraft.core.item.ItemStack;
@@ -12,8 +14,20 @@ public class ItemRune extends Item {
 		this.rune = rune;
 	}
 
+	public ItemRune(String name, int id, Rune rune) {
+		super(name, id);
+		this.rune = rune;
+	}
+
 	@Override
 	public ItemStack onUseItem(ItemStack itemstack, World world, EntityPlayer entityplayer) {
+		rune.activate(entityplayer);
 		return super.onUseItem(itemstack, world, entityplayer);
+	}
+
+	@Override
+	public void inventoryTick(ItemStack itemstack, World world, Entity entity, int i, boolean flag) {
+		rune.update();
+		super.inventoryTick(itemstack, world, entity, i, flag);
 	}
 }
