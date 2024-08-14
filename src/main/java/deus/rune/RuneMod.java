@@ -8,12 +8,12 @@ import turniplabs.halplibe.util.GameStartEntrypoint;
 import turniplabs.halplibe.util.RecipeEntrypoint;
 
 
-public class ExampleMod implements ModInitializer, GameStartEntrypoint, RecipeEntrypoint {
-    public static final String MOD_ID = "examplemod";
+public class RuneMod implements ModInitializer, GameStartEntrypoint, RecipeEntrypoint {
+    public static final String MOD_ID = "rune";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
     @Override
     public void onInitialize() {
-        LOGGER.info("ExampleMod initialized.");
+        LOGGER.info("RuneMod initialized.");
     }
 
 	@Override

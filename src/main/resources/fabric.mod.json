@@ -32,7 +32,7 @@
 		]
 	},
   "mixins": [
-      "examplemod.mixins.json"
+    "rune.mixins.json"
   ],
 
   "depends": {
