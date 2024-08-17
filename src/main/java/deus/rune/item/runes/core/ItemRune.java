@@ -26,7 +26,7 @@ public class ItemRune extends Item {
 
 	@Override
 	public void inventoryTick(ItemStack itemstack, World world, Entity entity, int i, boolean flag) {
-		rune.update();
+		rune.update(entity);
 		super.inventoryTick(itemstack, world, entity, i, flag);
 	}
 }

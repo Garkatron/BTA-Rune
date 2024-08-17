@@ -4,6 +4,7 @@ import deus.rune.Debug.Debug;
 import deus.rune.enums.RuneEffect;
 import deus.rune.enums.RuneType;
 import deus.rune.interfaces.IRune;
+import net.minecraft.core.entity.Entity;
 import net.minecraft.core.entity.player.EntityPlayer;
 
 import static deus.rune.Debug.Util.secondsToTicks;
@@ -13,54 +14,63 @@ public abstract class Rune implements IRune {
 	RuneType runeType = RuneType.USELESS;
 	RuneEffect runeEffect = RuneEffect.NONE;
 
-	int charge = 100;
-	int maxCharge = 100;
-	int chargeSpeed = 1;
-	int chargeAmount = 1;
-	int chargeSpentValue = 10;
-
 	boolean activated = false;
 	boolean canActivate = true;
 	boolean isInCooldown = false;
-	boolean isCharging = false;
 
-	int cooldownTimeTicks = secondsToTicks(1);
+	int activationTimeSeconds = 5; // Tiempo de activación en segundos
+	int activationTimeTicks = secondsToTicks(activationTimeSeconds); // Usando secondsToTicks para convertir segundos a ticks
+	int cooldownTimeTicks = secondsToTicks(1); // Convertir 1 segundo a ticks para el cooldown
 	int ticksRemaining = 0;
+	int ticksActive = 0;
+
+	boolean overTime = false;
 
 	@Override
-	public void update() {
+	public void update(Entity entity) {
 		if (isInCooldown) {
 			ticksRemaining++;
 			if (ticksRemaining >= cooldownTimeTicks) {
 				ticksRemaining = 0;
 				isInCooldown = false;
-				// Reactivate once cooldown is complete
 				reactivate();
 			}
 		}
-		if (isCharging) {
-			charge();
+
+		if (overTime) {
+			if (activated) {
+				ticksActive++;
+				effect(entity);
+				if (ticksActive >= activationTimeTicks) {
+					deactivate();
+					Debug.println("Rune deactivated after activation time: " + getClass().getSimpleName());
+				}
+			}
 		}
+
 	}
 
 	@Override
 	public void activate(EntityPlayer player) {
-		if (!canActivate || isCharging) {
-			Debug.println("Can't activate because: [isCharging]: "+isCharging + " or " + "[canActivate]: "+!canActivate);
-			player.sendMessage(getClass().getSimpleName() + " can't be used because it is charging.");
-
+		if (!canActivate || isInCooldown) {
+			Debug.println("Can't activate because: [isInCooldown]: " + isInCooldown + " or " + "[canActivate]: " + !canActivate);
+			player.sendMessage(getClass().getSimpleName() + " can't be used because it is in cooldown.");
 			return;
-		} // Prevent activation if currently charging
+		}
 
 		activated = true;
 		canActivate = false;
-		charge = 0;
+		ticksActive = 0;
 		cooldown();
-		charge();
 		effect(player);
 
-		player.sendMessage(getClass().getSimpleName() + " activated");
+		player.sendMessage(getClass().getSimpleName() + " activated for " + activationTimeSeconds + " seconds");
 		Debug.println("Rune activated: " + getClass().getSimpleName());
+	}
+
+	@Override
+	public void effect(Entity entity) {
+
 	}
 
 	@Override
@@ -68,28 +78,14 @@ public abstract class Rune implements IRune {
 		activated = false;
 		canActivate = true;
 		isInCooldown = false;
+		Debug.println("Rune deactivated: " + getClass().getSimpleName());
 	}
 
 	@Override
 	public void cooldown() {
 		isInCooldown = true;
-		ticksRemaining = 0; // Reset ticksRemaining for the cooldown cycle
+		ticksRemaining = 0; // Reiniciar ticksRemaining para el ciclo de cooldown
 		Debug.println("Cooldown started for rune: " + getClass().getSimpleName());
-	}
-
-	@Override
-	public void charge() {
-		if (charge < maxCharge) {
-			isCharging = true;
-			charge += chargeAmount * chargeSpeed;
-			Debug.println("Charging: "+charge);
-			if (charge >= maxCharge) {
-				charge = maxCharge;
-				isCharging = false;
-				// Optionally reactivate or perform an action when fully charged
-				reactivate();
-			}
-		}
 	}
 
 	@Override
@@ -131,52 +127,28 @@ public abstract class Rune implements IRune {
 	}
 
 	@Override
-	public int getCharge() {
-		return charge;
+	public int getActivationTimeSeconds() {
+		return activationTimeSeconds;
 	}
 
 	@Override
-	public int getChargeAmount() {
-		return chargeAmount;
+	public void setActivationTimeSeconds(int activationTimeSeconds) {
+		this.activationTimeSeconds = activationTimeSeconds;
+		this.activationTimeTicks = secondsToTicks(activationTimeSeconds);
 	}
 
 	@Override
-	public int getChargeSpeed() {
-		return chargeSpeed;
+	public int getActivationTimeTicks() {
+		return activationTimeTicks;
 	}
 
 	@Override
-	public int getChargeSpentValue() {
-		return chargeSpentValue;
+	public void setActivationTimeTicks(int activationTimeTicks) {
+		this.activationTimeTicks = activationTimeTicks;
 	}
 
 	@Override
-	public void setCharge(int charge) {
-		this.charge = charge;
-	}
-
-	@Override
-	public void setChargeAmount(int chargeAmount) {
-		this.chargeAmount = chargeAmount;
-	}
-
-	@Override
-	public void setChargeSpentValue(int chargeSpentValue) {
-		this.chargeSpentValue = chargeSpentValue;
-	}
-
-	@Override
-	public void setMaxCharge(int maxCharge) {
-		this.maxCharge = maxCharge;
-	}
-
-	@Override
-	public int getMaxCharge() {
-		return maxCharge;
-	}
-
-	@Override
-	public void setChargeSpeed(int chargeSpeed) {
-		this.chargeSpeed = chargeSpeed;
+	public void setCooldownTimeSeconds(int seconds) {
+		cooldownTimeTicks = secondsToTicks(seconds);
 	}
 }

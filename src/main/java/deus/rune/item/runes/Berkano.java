@@ -6,9 +6,8 @@ import net.minecraft.core.entity.player.EntityPlayer;
 public class Berkano extends Rune {
 
 	public Berkano() {
-		setChargeSpentValue(1000);
-		setChargeAmount(50);
-		setMaxCharge(1000);
+		setActivationTimeSeconds(12);
+		setCooldownTimeSeconds(15);
 	}
 
 	@Override

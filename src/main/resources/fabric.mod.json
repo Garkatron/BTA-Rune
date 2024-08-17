@@ -31,6 +31,12 @@
 			"deus.rune.RuneMod"
 		]
 	},
+
+	"custom": {
+		"loom:injected_interfaces": {
+			"net/minecraft/core/entity/player": ["deus/rune/interfaces/IEntityPlayerAccesor"]
+		}
+	},
   "mixins": [
     "rune.mixins.json"
   ],
