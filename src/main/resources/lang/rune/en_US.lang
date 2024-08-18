@@ -18,3 +18,13 @@ item.rune.ar.t1.desc = "Grants extended immunity to fire damage. Additionally, h
 
 item.rune.ar.t2.name = (Ar)
 item.rune.ar.t2.desc = "Grants extended immunity to fire damage. Additionally, heals the wearer when covered in flames."
+
+item.rune.rune.pebble.name = Rune pebble
+item.rune.rune.rock.name = Rune rock
+
+item.rune.hearth.vengeance.name = Vengeance hearth
+item.rune.nether.name = Nether
+
+
+# Blocks
+tile.rune.block.name = Rune block

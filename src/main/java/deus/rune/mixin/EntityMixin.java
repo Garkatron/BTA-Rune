@@ -2,6 +2,7 @@ package deus.rune.mixin;
 
 import deus.rune.interfaces.IEntityAccessor;
 import net.minecraft.core.entity.Entity;
+import net.minecraft.core.world.data.SynchedEntityData;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
@@ -16,6 +17,12 @@ public abstract class EntityMixin implements IEntityAccessor {
 
 	@Shadow
 	public int remainingFireTicks;
+
+	@Shadow
+	protected SynchedEntityData entityData;
+
+	@Shadow
+	public abstract SynchedEntityData getEntityData();
 
 	@Override
 	public boolean Rune$getIsInvulnerableFire() {
@@ -34,6 +41,7 @@ public abstract class EntityMixin implements IEntityAccessor {
 
 	@Override
 	public boolean Rune$isCoveredInFlames() {
-		return remainingFireTicks <= 0;
+
+		return !(remainingFireTicks <= 0);
 	}
 }

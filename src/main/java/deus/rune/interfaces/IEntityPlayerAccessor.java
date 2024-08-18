@@ -7,8 +7,13 @@ public interface IEntityPlayerAccessor {
 	int Rune$getExtraStrengthFromRune();
 	boolean Rune$getFireHeal();
 	void Rune$setFireHeal(boolean value);
+	void Rune$setFireHealAlways(boolean value);
+	boolean Rune$getFireHealAlways();
 
 	void Rune$setNetherOverpowered(boolean value);
 	boolean Rune$getNetherOverpowered();
+
+	void Rune$setMaxHealth(int value);
+
 
 }
