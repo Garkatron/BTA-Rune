@@ -1,16 +1,14 @@
 package deus.rune.item;
 
-import deus.rune.Debug.StaticFieldsExtractor;
+import deus.rune.util.StaticFieldsExtractor;
 import deus.rune.item.runes.Ar;
 import deus.rune.item.runes.Berkano;
 import deus.rune.item.runes.LittleBerkano;
 import deus.rune.item.runes.Sowilo;
 import deus.rune.item.runes.core.ItemRune;
-import net.minecraft.core.block.Block;
 import net.minecraft.core.item.Item;
 import turniplabs.halplibe.helper.CreativeHelper;
 import turniplabs.halplibe.helper.ItemBuilder;
-import turniplabs.halplibe.helper.RecipeBuilder;
 
 import java.lang.reflect.Field;
 

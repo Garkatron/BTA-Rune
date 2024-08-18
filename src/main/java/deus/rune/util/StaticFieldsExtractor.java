@@ -1,4 +1,4 @@
-package deus.rune.Debug;
+package deus.rune.util;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;

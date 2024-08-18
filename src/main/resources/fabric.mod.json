@@ -29,6 +29,9 @@
 		],
 		"recipesReady": [
 			"deus.rune.RuneMod"
+		],
+		"terrain-api": [
+			"deus.rune.ModContainer.TerrainApi.TerrainApiPlugin"
 		]
 	},
 

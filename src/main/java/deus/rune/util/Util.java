@@ -1,4 +1,4 @@
-package deus.rune.Debug;
+package deus.rune.util;
 
 public class Util {
 	static final int TICKS_PER_SECOND = 20;
