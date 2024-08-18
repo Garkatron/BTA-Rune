@@ -6,7 +6,7 @@ import net.minecraft.core.entity.player.EntityPlayer;
 public class LittleBerkano extends Rune {
 
 	public LittleBerkano() {
-		setActivationTimeSeconds(2);
+		setActivationTimeSeconds(1);
 		setCooldownTimeSeconds(5);
 	}
 

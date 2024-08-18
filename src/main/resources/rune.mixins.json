@@ -4,6 +4,7 @@
   "package": "deus.rune.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "EntityMixin",
     "EntityPlayerMixin"
   ],
   "client": [

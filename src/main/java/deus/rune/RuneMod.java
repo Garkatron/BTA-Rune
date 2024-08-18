@@ -31,7 +31,7 @@ public class RuneMod implements ModInitializer, GameStartEntrypoint, RecipeEntry
 
 	@Override
 	public void onRecipesReady() {
-
+		RecipeInitializer.initialize();
 	}
 
 	@Override

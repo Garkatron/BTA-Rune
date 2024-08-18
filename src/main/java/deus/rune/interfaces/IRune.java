@@ -5,6 +5,9 @@ import deus.rune.enums.RuneType;
 import net.minecraft.core.entity.Entity;
 import net.minecraft.core.entity.player.EntityPlayer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public interface IRune {
 	void activate(EntityPlayer player);
 	void deactivate();
@@ -12,7 +15,7 @@ public interface IRune {
 	boolean isActivated();
 	boolean isDeactivated();
 
-	void update(Entity entity);
+	void update(EntityPlayer player);
 
 	RuneType getRuneType();
 	void setRuneType(RuneType runeType);
@@ -23,14 +26,22 @@ public interface IRune {
 	void reactivate();
 
 	void effect(EntityPlayer player);
-	void effect(Entity entity);
 
+	void setIsOvertime(boolean isOvertime);
+	boolean getIsOvertime();
 
-	public int getActivationTimeSeconds();
-	public void setActivationTimeSeconds(int activationTimeSeconds);
+	int getActivationTimeSeconds();
+	void setActivationTimeSeconds(int activationTimeSeconds);
 
-	public int getActivationTimeTicks();
+	int getActivationTimeTicks();
 
-	public void setActivationTimeTicks(int activationTimeTicks);
-	public void setCooldownTimeSeconds(int seconds);
+	void setActivationTimeTicks(int activationTimeTicks);
+	void setCooldownTimeSeconds(int seconds);
+
+	void addTiers(int tier);
+	List<Integer> getTiers();
+	void setCurrentTier(int index);
+	int getCurrentTier();
+
+	EntityPlayer getCurrentUser();
 }

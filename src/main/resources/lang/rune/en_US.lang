@@ -1,0 +1,20 @@
+# Runa Sowilo
+item.rune.sowilo.name = ᛋ (Sowilo)
+item.rune.sowilo.desc = "Represents the sun and victory. Provides enhanced strength and resilience."
+
+# Runa Berkano
+item.rune.little.berkano.name = ᛒ (Berkano)
+item.rune.little.berkano.desc = "Symbolizes growth and renewal. Grants healing and increased vitality."
+
+item.rune.berkano.name = ᛒ (Berkano)
+item.rune.berkano.desc = "Symbolizes growth and renewal. Grants healing and increased vitality."
+
+# Runa Ar (Tier 0 y Tier 1)
+item.rune.ar.t0.name = (Ar)
+item.rune.ar.t0.desc = "Provides immunity to fire damage for a short duration. Useful for protection in fiery environments."
+
+item.rune.ar.t1.name = (Ar)
+item.rune.ar.t1.desc = "Grants extended immunity to fire damage. Additionally, heals the wearer when covered in flames."
+
+item.rune.ar.t2.name = (Ar)
+item.rune.ar.t2.desc = "Grants extended immunity to fire damage. Additionally, heals the wearer when covered in flames."

@@ -7,9 +7,17 @@ import deus.rune.interfaces.IRune;
 import net.minecraft.core.entity.Entity;
 import net.minecraft.core.entity.player.EntityPlayer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static deus.rune.Debug.Util.secondsToTicks;
 
 public abstract class Rune implements IRune {
+
+	List<Integer> tiers = new ArrayList<>();
+	int currentTier = 0;
+
+	EntityPlayer currentUser;
 
 	RuneType runeType = RuneType.USELESS;
 	RuneEffect runeEffect = RuneEffect.NONE;
@@ -27,7 +35,24 @@ public abstract class Rune implements IRune {
 	boolean overTime = false;
 
 	@Override
-	public void update(Entity entity) {
+	public void update(EntityPlayer player) {
+
+
+		if (overTime && activated) {
+			ticksActive++;
+
+			// Apply effect every second
+			if (ticksActive % secondsToTicks(1) == 0) {
+				if (currentUser!=null)
+					effect(currentUser);
+			}
+
+			if (ticksActive >= activationTimeTicks) {
+				deactivate();
+				Debug.println("Rune deactivated after activation time: " + getClass().getSimpleName());
+			}
+		}
+
 		if (isInCooldown) {
 			ticksRemaining++;
 			if (ticksRemaining >= cooldownTimeTicks) {
@@ -36,19 +61,8 @@ public abstract class Rune implements IRune {
 				reactivate();
 			}
 		}
-
-		if (overTime) {
-			if (activated) {
-				ticksActive++;
-				effect(entity);
-				if (ticksActive >= activationTimeTicks) {
-					deactivate();
-					Debug.println("Rune deactivated after activation time: " + getClass().getSimpleName());
-				}
-			}
-		}
-
 	}
+
 
 	@Override
 	public void activate(EntityPlayer player) {
@@ -58,6 +72,7 @@ public abstract class Rune implements IRune {
 			return;
 		}
 
+		currentUser = player;
 		activated = true;
 		canActivate = false;
 		ticksActive = 0;
@@ -69,15 +84,9 @@ public abstract class Rune implements IRune {
 	}
 
 	@Override
-	public void effect(Entity entity) {
-
-	}
-
-	@Override
 	public void deactivate() {
 		activated = false;
 		canActivate = true;
-		isInCooldown = false;
 		Debug.println("Rune deactivated: " + getClass().getSimpleName());
 	}
 
@@ -150,5 +159,40 @@ public abstract class Rune implements IRune {
 	@Override
 	public void setCooldownTimeSeconds(int seconds) {
 		cooldownTimeTicks = secondsToTicks(seconds);
+	}
+
+	@Override
+	public void setIsOvertime(boolean isOvertime) {
+		overTime = isOvertime;
+	}
+
+	@Override
+	public boolean getIsOvertime() {
+		return overTime;
+	}
+
+	@Override
+	public void addTiers(int tier) {
+		tiers.add(tier);
+	}
+
+	@Override
+	public List<Integer> getTiers() {
+		return tiers;
+	}
+
+	@Override
+	public int getCurrentTier() {
+		return currentTier;
+	}
+
+	@Override
+	public void setCurrentTier(int index) {
+		this.currentTier = tiers.get(index);
+	}
+
+	@Override
+	public EntityPlayer getCurrentUser() {
+		return currentUser;
 	}
 }

@@ -1,6 +1,6 @@
 package deus.rune.item.runes;
 
-import deus.rune.interfaces.IEntityPlayerAccesor;
+import deus.rune.interfaces.IEntityPlayerAccessor;
 import deus.rune.item.runes.core.Rune;
 import net.minecraft.core.entity.player.EntityPlayer;
 
@@ -8,20 +8,21 @@ import net.minecraft.core.entity.player.EntityPlayer;
 
 public class Sowilo extends Rune {
 
-	private IEntityPlayerAccesor currentUser;
+	private IEntityPlayerAccessor currentUser;
 
 	private int strength = 0;
 
 	public Sowilo(int strength) {
-		setActivationTimeSeconds(2);
-		setCooldownTimeSeconds(2);
+		setActivationTimeSeconds(10);
+		setCooldownTimeSeconds(300);
+		setIsOvertime(true);
 		this.strength = strength;
 	}
 
 	@Override
 	public void effect(EntityPlayer player) {
-		IEntityPlayerAccesor customPlayer = (IEntityPlayerAccesor) player;
-		customPlayer.Rune$addExtraStrengthFromRune(strength);
+		IEntityPlayerAccessor customPlayer = (IEntityPlayerAccessor) player;
+		customPlayer.Rune$setExtraStrengthFromRune(strength);
 		player.sendMessage("Strength aumented in:" + strength);
 		currentUser = customPlayer;
 	}
