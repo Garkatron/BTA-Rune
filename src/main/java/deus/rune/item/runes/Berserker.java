@@ -6,18 +6,17 @@ import net.minecraft.core.entity.Entity;
 import net.minecraft.core.entity.player.EntityPlayer;
 import net.minecraft.core.util.helper.DamageType;
 
-public class VengeanceHearth extends Rune {
+public class Berserker extends Rune {
 
 	private IEntityPlayerAccessor currentUser;
 
 	private int strength = 0;
 	private int maxHealth = 0;
 
-	public VengeanceHearth(int maxHealth, int strength) {
+	public Berserker() {
 
-		setIsOvertime(false);
-		this.strength = strength;
-		this.maxHealth = maxHealth;
+		this.strength = 26;
+		this.maxHealth = 2;
 	}
 
 	@Override

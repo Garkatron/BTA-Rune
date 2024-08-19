@@ -22,8 +22,10 @@ item.rune.ar.t2.desc = "Grants extended immunity to fire damage. Additionally, h
 item.rune.rune.pebble.name = Rune pebble
 item.rune.rune.rock.name = Rune rock
 
-item.rune.hearth.vengeance.name = Vengeance hearth
+item.rune.heart.name = Heart
+item.rune.heart.vengeance.name = Vengeance heart
 item.rune.nether.name = Nether
+item.rune.berserker.name = Berserker
 
 
 # Blocks

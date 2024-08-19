@@ -1,16 +1,17 @@
 package deus.rune.item.runes.core;
 
 import net.minecraft.core.entity.player.EntityPlayer;
+import net.minecraft.core.item.Item;
 import net.minecraft.core.item.ItemFood;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.world.World;
 
-public class ItemBloodyRune extends ItemFood {
+public class ItemBloodyRune extends Item {
 
 	private final Rune rune;
 
-	public ItemBloodyRune(String name, int id, int healAmount, int ticksPerHeal, boolean favouriteWolfMeat, int maxStackSize, Rune rune) {
-		super(name, id, healAmount, ticksPerHeal, favouriteWolfMeat, maxStackSize);
+	public ItemBloodyRune(String name, int id, Rune rune) {
+		super(name, id);
 		this.rune = rune;
 	}
 

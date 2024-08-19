@@ -2,6 +2,7 @@ package deus.rune.item;
 
 import deus.rune.item.runes.*;
 import deus.rune.item.runes.core.ItemBloodyRune;
+import deus.rune.item.runes.core.ItemSoulRune;
 import deus.rune.util.StaticFieldsExtractor;
 import deus.rune.item.runes.core.ItemRune;
 import net.minecraft.core.item.Item;
@@ -25,9 +26,10 @@ public class RuneItems {
 	public static ItemRune art0 = new ItemRune("ar.t0",MOD_CONFIG.newItemID(), new Ar(0));
 	public static ItemRune art1 = new ItemRune("ar.t1",MOD_CONFIG.newItemID(), new Ar(1));
 	public static ItemRune art2 = new ItemRune("ar.t2",MOD_CONFIG.newItemID(), new Ar(2));
-	public static ItemBloodyRune vengeanceHearth = new ItemBloodyRune("hearth.vengeance", MOD_CONFIG.newItemID(), 1,1,false,1, new VengeanceHearth(10,20));
-	public static ItemBloodyRune hearth = new ItemBloodyRune("hearth", MOD_CONFIG.newItemID(), 1,1,false,1, new Hearth());
-	public static ItemBloodyRune nether = new ItemBloodyRune("nether", MOD_CONFIG.newItemID(), 1,1,false,1, new Nether());
+	public static ItemBloodyRune vengeanceHearth = new ItemBloodyRune("hearth.vengeance", MOD_CONFIG.newItemID(), new VengeanceHeart(10,20));
+	public static ItemSoulRune hearth = new ItemSoulRune("hearth", MOD_CONFIG.newItemID(), new Heart());
+	public static ItemSoulRune nether = new ItemSoulRune("nether", MOD_CONFIG.newItemID(), new Nether());
+	public static ItemSoulRune berserker = new ItemSoulRune("berserker", MOD_CONFIG.newItemID(), new Berserker());
 
 	public RuneItems() {
 		berkano = genericItemBuilder.build(berkano);
@@ -38,9 +40,10 @@ public class RuneItems {
 		art2 = genericItemBuilder.build(art2);
 		runePebble = genericItemBuilder.build(runePebble);
 		runeRock = genericItemBuilder.build(runeRock);
+		hearth = genericItemBuilder.build(hearth);
 		vengeanceHearth = genericItemBuilder.build(vengeanceHearth);
 		nether = genericItemBuilder.build(nether);
-		//hearth = genericItemBuilder.build(hearth);
+		berserker = genericItemBuilder.build(berserker);
 
 		assignPriorities(this.getClass());
 
@@ -66,4 +69,5 @@ public class RuneItems {
 			e.printStackTrace();
 		}
 	}
+
 }

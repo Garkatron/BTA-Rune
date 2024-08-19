@@ -14,15 +14,8 @@ public abstract class EntityMixin implements IEntityAccessor {
 	@Shadow
 	protected boolean fireImmune;
 
-
 	@Shadow
 	public int remainingFireTicks;
-
-	@Shadow
-	protected SynchedEntityData entityData;
-
-	@Shadow
-	public abstract SynchedEntityData getEntityData();
 
 	@Override
 	public boolean Rune$getIsInvulnerableFire() {

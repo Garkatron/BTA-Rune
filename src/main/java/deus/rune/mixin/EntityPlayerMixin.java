@@ -1,12 +1,16 @@
 package deus.rune.mixin;
 
+import deus.rune.Debug.Debug;
 import deus.rune.interfaces.IEntityAccessor;
 import deus.rune.interfaces.IEntityPlayerAccessor;
+import deus.rune.item.runes.core.Rune;
 import deus.rune.util.Util;
+import net.minecraft.client.render.window.GameWindow;
 import net.minecraft.core.entity.Entity;
 import net.minecraft.core.entity.player.EntityPlayer;
 import net.minecraft.core.player.inventory.InventoryPlayer;
 import net.minecraft.core.util.helper.DamageType;
+import net.minecraft.core.world.World;
 import org.checkerframework.checker.units.qual.A;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -15,12 +19,25 @@ import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static deus.rune.RuneMod.MOD_CONFIG;
+
 @Mixin(EntityPlayer.class)
 public abstract class EntityPlayerMixin implements IEntityPlayerAccessor {
 
 	@Shadow
 	public abstract int getMaxHealth();
 
+	@Shadow
+	public double xdO;
+
+	@Shadow
+	public abstract String getDisplayName();
+
+	@Shadow
+	public String username;
 	@Unique
 	private boolean fireHeal = false;
 
@@ -44,6 +61,9 @@ public abstract class EntityPlayerMixin implements IEntityPlayerAccessor {
 
 	@Unique
 	private int ticksRemaining = 0;
+
+	@Unique
+	private List<Rune> permanentRunes = new ArrayList<Rune>();
 
 	@Override
 	public boolean Rune$getFireHeal() {
@@ -117,16 +137,33 @@ public abstract class EntityPlayerMixin implements IEntityPlayerAccessor {
 
 	public void Rune$setMaxHealth(int maxHealth) {
 		this.maxHealth = maxHealth;
-
 	}
 
 	@Override
 	public void Rune$setFireHealAlways(boolean value) {
+		Debug.println("FIRE HEAL ALWAYS");
 		fireHealAlways = value;
 	}
 
 	@Override
 	public boolean Rune$getFireHealAlways() {
 		return fireHealAlways;
+	}
+
+	@Override
+	public void Rune$addPermanentRune(Rune rune) {
+		permanentRunes.add(rune);
+		rune.effect((EntityPlayer) (Object) this);
+	}
+
+
+	@Override
+	public Rune Rune$getPermanentRune(int index) {
+		return permanentRunes.get(index);
+	}
+
+	@Override
+	public List<Rune> Rune$getPermanentRunes() {
+		return permanentRunes;
 	}
 }
