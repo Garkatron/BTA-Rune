@@ -30,3 +30,4 @@ item.rune.berserker.name = Berserker
 
 # Blocks
 tile.rune.block.name = Rune block
+tile.rune.nether.block.name = Nether rune block

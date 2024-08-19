@@ -12,11 +12,11 @@ public class Sowilo extends Rune {
 
 	private int strength = 0;
 
-	public Sowilo(int strength) {
+	public Sowilo() {
 		setActivationTimeSeconds(10);
 		setCooldownTimeSeconds(300);
 		setIsOvertime(true);
-		this.strength = strength;
+		this.strength = 26;
 	}
 
 	@Override

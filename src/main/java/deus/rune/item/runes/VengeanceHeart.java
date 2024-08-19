@@ -8,16 +8,14 @@ import net.minecraft.core.util.helper.DamageType;
 
 public class VengeanceHeart extends Rune {
 
-	private IEntityPlayerAccessor currentUser;
-
 	private int strength = 0;
 	private int maxHealth = 0;
 
-	public VengeanceHeart(int maxHealth, int strength) {
+	public VengeanceHeart() {
 
 		setIsOvertime(false);
-		this.strength = strength;
-		this.maxHealth = maxHealth;
+		this.maxHealth = 10;
+		this.strength = 8;
 	}
 
 	@Override
@@ -32,7 +30,6 @@ public class VengeanceHeart extends Rune {
 
 		//player.sendMessage("Strength aumented in:" + strength);
 
-		currentUser = customPlayer;
 	}
 
 	@Override

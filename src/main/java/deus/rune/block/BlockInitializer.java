@@ -19,26 +19,34 @@ import static deus.rune.RuneMod.MOD_ID;
 public class BlockInitializer {
 
 	public static Block runeBlock;
+	public static Block netherRuneBlock;
 
 	public void initialize() {
 
 		BlockBuilder genericBlockBuilder = new BlockBuilder(MOD_ID)
-			.setBlockSound(BlockSounds.METAL)
+			.setBlockSound(BlockSounds.STONE)
 			.setBlockSound(new BlockSound("step.stone", "step.stone", 1.0f, 1.0f))
-			.setHardness(3.0f)
-			.setResistance(5.0f)
 			.setTags(BlockTags.MINEABLE_BY_PICKAXE)
 			;
 
 		runeBlock = genericBlockBuilder
 			.setBlockModel(block -> new BlockModelStandard<>(block).withTextures("rune:block/rune_block"))
-			.build(new Block("rune.block", MOD_CONFIG.newBlockID(), Material.stone));
+			.setHardness(3.0f)
+			.setResistance(5.0f)
+			.build(new BlockRuneStone("rune.block", MOD_CONFIG.newBlockID(), Material.stone));
 
+		netherRuneBlock = genericBlockBuilder
+			.setBlockModel(block -> new BlockModelStandard<>(block).withTextures("rune:block/rune_nether_block"))
+			.setHardness(3.0f)
+			.setResistance(3.0f)
+			.build(new BlockNetherRuneStone("rune.nether.block", MOD_CONFIG.newBlockID(), Material.stone));
 	}
 
 	public void blockAddDetails() {
 		ItemToolPickaxe.miningLevels.put(runeBlock, 1);
-		CreativeHelper.setParent(runeBlock, Block.stone);
+		CreativeHelper.setParent(runeBlock, Block.netherrack);
+		CreativeHelper.setParent(netherRuneBlock, Block.stone);
 		Registries.ITEM_GROUPS.register("rune:rune_ores", Registries.stackListOf(runeBlock));
+		Registries.ITEM_GROUPS.register("rune:rune_ores", Registries.stackListOf(netherRuneBlock));
 	}
 }

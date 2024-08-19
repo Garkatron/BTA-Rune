@@ -1,4 +1,4 @@
-package deus.rune;
+package deus.rune.recipes;
 
 import net.minecraft.core.item.Item;
 import turniplabs.halplibe.helper.RecipeBuilder;
@@ -57,5 +57,35 @@ public class RecipeInitializer {
 			.addInput('d', Item.bucketLava)
 			.addInput('n', Item.nethercoal)
 			.create("RecipeArT1", art1.getDefaultStack());
+
+		RecipeBuilder.Shaped(MOD_ID)
+			.setShape(
+				"rnr",
+				"ndn",
+				"rnr")
+			.addInput('r', runeRock)
+			.addInput('d', art1)
+			.addInput('n', Item.nethercoal)
+			.create("RecipeArT2", art2.getDefaultStack());
+
+		RecipeBuilder.Shaped(MOD_ID)
+			.setShape(
+				"rnr",
+				"ndn",
+				"rnr")
+			.addInput('r', runeRock)
+			.addInput('d', Item.foodAppleGold)
+			.addInput('n', Item.diamond)
+			.create("RecipeHeart", heart.getDefaultStack());
+
+		RecipeBuilder.Shaped(MOD_ID)
+			.setShape(
+				"rnr",
+				"ndn",
+				"rnr")
+			.addInput('r', Item.ingotSteel)
+			.addInput('d', heart)
+			.addInput('n', Item.toolSwordSteel)
+			.create("RecipeVengeanceHeart", vengeanceHeart.getDefaultStack());
 	}
 }

@@ -3,9 +3,11 @@ package deus.rune;
 import deus.rune.Debug.Debug;
 import deus.rune.block.BlockInitializer;
 import deus.rune.item.RuneItems;
+import deus.rune.recipes.RecipeInitializer;
+import deus.rune.recipes.RuneRecipeRegistries;
 import deus.rune.util.ConfigHandler;
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.client.gui.hud.HudComponent;
+import net.minecraft.core.data.registry.Registries;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import turniplabs.halplibe.util.GameStartEntrypoint;
@@ -44,6 +46,8 @@ public class RuneMod implements ModInitializer, GameStartEntrypoint, RecipeEntry
 
 	@Override
 	public void initNamespaces() {
+		new RuneRecipeRegistries();
+		Registries.RECIPES.register("rune", RuneRecipeRegistries.RUNE);
 
 	}
 }

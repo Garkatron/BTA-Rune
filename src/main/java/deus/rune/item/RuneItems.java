@@ -20,14 +20,17 @@ public class RuneItems {
 
 	public static Item runePebble = new Item("rune.pebble", MOD_CONFIG.newItemID());
 	public static Item runeRock = new Item("rune.rock", MOD_CONFIG.newItemID());
+
 	public static ItemRune berkano = new ItemRune("berkano",MOD_CONFIG.newItemID(), new Berkano());
 	public static ItemRune little_berkano = new ItemRune("little.berkano",MOD_CONFIG.newItemID(), new LittleBerkano());
-	public static ItemRune sowilo = new ItemRune("sowilo",MOD_CONFIG.newItemID(), new Sowilo(26));
+	public static ItemRune sowilo = new ItemRune("sowilo",MOD_CONFIG.newItemID(), new Sowilo());
 	public static ItemRune art0 = new ItemRune("ar.t0",MOD_CONFIG.newItemID(), new Ar(0));
 	public static ItemRune art1 = new ItemRune("ar.t1",MOD_CONFIG.newItemID(), new Ar(1));
 	public static ItemRune art2 = new ItemRune("ar.t2",MOD_CONFIG.newItemID(), new Ar(2));
-	public static ItemBloodyRune vengeanceHearth = new ItemBloodyRune("hearth.vengeance", MOD_CONFIG.newItemID(), new VengeanceHeart(10,20));
-	public static ItemSoulRune hearth = new ItemSoulRune("hearth", MOD_CONFIG.newItemID(), new Heart());
+
+	public static ItemBloodyRune vengeanceHeart = new ItemBloodyRune("heart.vengeance", MOD_CONFIG.newItemID(), new VengeanceHeart());
+
+	public static ItemSoulRune heart = new ItemSoulRune("heart", MOD_CONFIG.newItemID(), new Heart());
 	public static ItemSoulRune nether = new ItemSoulRune("nether", MOD_CONFIG.newItemID(), new Nether());
 	public static ItemSoulRune berserker = new ItemSoulRune("berserker", MOD_CONFIG.newItemID(), new Berserker());
 
@@ -40,8 +43,8 @@ public class RuneItems {
 		art2 = genericItemBuilder.build(art2);
 		runePebble = genericItemBuilder.build(runePebble);
 		runeRock = genericItemBuilder.build(runeRock);
-		hearth = genericItemBuilder.build(hearth);
-		vengeanceHearth = genericItemBuilder.build(vengeanceHearth);
+		heart = genericItemBuilder.build(heart);
+		vengeanceHeart = genericItemBuilder.build(vengeanceHeart);
 		nether = genericItemBuilder.build(nether);
 		berserker = genericItemBuilder.build(berserker);
 
