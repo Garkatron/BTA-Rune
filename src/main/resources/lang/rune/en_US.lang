@@ -26,7 +26,7 @@ item.rune.heart.name = Heart
 item.rune.heart.vengeance.name = Vengeance heart
 item.rune.nether.name = Nether
 item.rune.berserker.name = Berserker
-
+item.rune.friendship.ligament.name = Friendship Ligament
 
 # Blocks
 tile.rune.block.name = Rune block

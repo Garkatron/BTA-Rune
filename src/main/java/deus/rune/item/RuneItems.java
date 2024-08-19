@@ -29,6 +29,7 @@ public class RuneItems {
 	public static ItemRune art2 = new ItemRune("ar.t2",MOD_CONFIG.newItemID(), new Ar(2));
 
 	public static ItemBloodyRune vengeanceHeart = new ItemBloodyRune("heart.vengeance", MOD_CONFIG.newItemID(), new VengeanceHeart());
+	public static ItemBloodyRune friendshipLigament = new ItemBloodyRune("friendship.ligament", MOD_CONFIG.newItemID(), new FriendshipLigament());
 
 	public static ItemSoulRune heart = new ItemSoulRune("heart", MOD_CONFIG.newItemID(), new Heart());
 	public static ItemSoulRune nether = new ItemSoulRune("nether", MOD_CONFIG.newItemID(), new Nether());
@@ -47,6 +48,7 @@ public class RuneItems {
 		vengeanceHeart = genericItemBuilder.build(vengeanceHeart);
 		nether = genericItemBuilder.build(nether);
 		berserker = genericItemBuilder.build(berserker);
+		friendshipLigament = genericItemBuilder.build(friendshipLigament);
 
 		assignPriorities(this.getClass());
 

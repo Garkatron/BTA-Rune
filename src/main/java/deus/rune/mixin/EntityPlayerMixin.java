@@ -4,6 +4,8 @@ import deus.rune.Debug.Debug;
 import deus.rune.interfaces.IEntityAccessor;
 import deus.rune.interfaces.IEntityPlayerAccessor;
 import deus.rune.item.runes.core.Rune;
+import deus.rune.item.runes.core.SignalAccesor;
+import deus.rune.util.Tuple;
 import deus.rune.util.Util;
 import net.minecraft.client.render.window.GameWindow;
 import net.minecraft.core.entity.Entity;
@@ -18,14 +20,17 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import deus.godotsignalsystem.core.Signal;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import static deus.rune.RuneMod.MOD_CONFIG;
 
 @Mixin(EntityPlayer.class)
 public abstract class EntityPlayerMixin implements IEntityPlayerAccessor {
+
+	@Shadow
+	public InventoryPlayer inventory;
 
 	@Shadow
 	public abstract int getMaxHealth();
@@ -65,8 +70,13 @@ public abstract class EntityPlayerMixin implements IEntityPlayerAccessor {
 	@Unique
 	private List<Rune> permanentRunes = new ArrayList<Rune>();
 
+
+	@Unique
+	private InventoryPlayer inventoryBackup;
+
 	@Override
 	public boolean Rune$getFireHeal() {
+
 		return fireHeal;
 	}
 
@@ -119,6 +129,11 @@ public abstract class EntityPlayerMixin implements IEntityPlayerAccessor {
 		ticksRemaining++;
 	}
 
+	@Inject(method = "hurt", at = @At("HEAD"))
+	private void emitHurtSignal(Entity attacker, int damage, DamageType type, CallbackInfoReturnable<Boolean> cir) {
+		SignalAccesor.hurt.emit(new Tuple<>((EntityPlayer) (Object) this, damage));
+	}
+
 
 	@Override
 	public void Rune$setExtraStrengthFromRune(int value) {
@@ -165,5 +180,25 @@ public abstract class EntityPlayerMixin implements IEntityPlayerAccessor {
 	@Override
 	public List<Rune> Rune$getPermanentRunes() {
 		return permanentRunes;
+	}
+
+	@Override
+	public InventoryPlayer Rune$getPlayerInventory() {
+		return this.inventory;
+	}
+
+	@Override
+	public void Rune$setPlayerInventory(InventoryPlayer inventory) {
+		this.inventory = inventory;
+	}
+
+	@Override
+	public void Rune$setInventoryBackup(InventoryPlayer inventoryBackup) {
+		this.inventoryBackup = inventoryBackup;
+	}
+
+	@Override
+	public InventoryPlayer Rune$GetInventoryBackup() {
+		return this.inventoryBackup;
 	}
 }
