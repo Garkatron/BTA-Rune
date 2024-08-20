@@ -19,6 +19,10 @@ item.rune.ar.t1.desc = "Grants extended immunity to fire damage. Additionally, h
 item.rune.ar.t2.name = (Ar)
 item.rune.ar.t2.desc = "Grants extended immunity to fire damage. Additionally, heals the wearer when covered in flames."
 
+item.rune.alcarin.name = (Alcarin)
+item.rune.alcarin.desc = Jump boost
+
+
 item.rune.rune.pebble.name = Rune pebble
 item.rune.rune.rock.name = Rune rock
 

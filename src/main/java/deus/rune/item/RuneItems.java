@@ -15,7 +15,7 @@ import static deus.rune.RuneMod.MOD_CONFIG;
 import static deus.rune.RuneMod.MOD_ID;
 
 public class RuneItems {
-
+	//Ehwaz (ᛖ)
 	ItemBuilder genericItemBuilder = new ItemBuilder(MOD_ID);
 
 	public static Item runePebble = new Item("rune.pebble", MOD_CONFIG.newItemID());
@@ -27,6 +27,7 @@ public class RuneItems {
 	public static ItemRune art0 = new ItemRune("ar.t0",MOD_CONFIG.newItemID(), new Ar(0));
 	public static ItemRune art1 = new ItemRune("ar.t1",MOD_CONFIG.newItemID(), new Ar(1));
 	public static ItemRune art2 = new ItemRune("ar.t2",MOD_CONFIG.newItemID(), new Ar(2));
+	public static ItemRune alcarin = new ItemRune("alcarin",MOD_CONFIG.newItemID(), new Alcarin());
 
 	public static ItemBloodyRune vengeanceHeart = new ItemBloodyRune("heart.vengeance", MOD_CONFIG.newItemID(), new VengeanceHeart());
 	public static ItemBloodyRune friendshipLigament = new ItemBloodyRune("friendship.ligament", MOD_CONFIG.newItemID(), new FriendshipLigament());
@@ -49,6 +50,7 @@ public class RuneItems {
 		nether = genericItemBuilder.build(nether);
 		berserker = genericItemBuilder.build(berserker);
 		friendshipLigament = genericItemBuilder.build(friendshipLigament);
+		alcarin = genericItemBuilder.build(alcarin);
 
 		assignPriorities(this.getClass());
 

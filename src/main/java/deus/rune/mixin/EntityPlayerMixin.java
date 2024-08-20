@@ -129,7 +129,7 @@ public abstract class EntityPlayerMixin implements IEntityPlayerAccessor {
 		ticksRemaining++;
 	}
 
-	@Inject(method = "hurt", at = @At("HEAD"))
+	@Inject(method = "hurt", at = @At("HEAD"), remap = false)
 	private void emitHurtSignal(Entity attacker, int damage, DamageType type, CallbackInfoReturnable<Boolean> cir) {
 		SignalAccesor.hurt.emit(new Tuple<>((EntityPlayer) (Object) this, damage));
 	}

@@ -87,5 +87,14 @@ public class RecipeInitializer {
 			.addInput('d', heart)
 			.addInput('n', Item.toolSwordSteel)
 			.create("RecipeVengeanceHeart", vengeanceHeart.getDefaultStack());
+
+		RecipeBuilder.Shaped(MOD_ID)
+			.setShape(
+				"nnn",
+				"ndn",
+				"nnn")
+			.addInput('d', Item.slimeball)
+			.addInput('n', runeRock)
+			.create("RecipeAlcarin", alcarin.getDefaultStack());
 	}
 }
