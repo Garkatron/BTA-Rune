@@ -1,8 +1,7 @@
-package deus.rune.item.runes;
+package deus.rune.item.runes.normal;
 
 import deus.rune.interfaces.IEntityLivingAccesor;
 import deus.rune.item.runes.core.Rune;
-import net.minecraft.core.entity.EntityLiving;
 import net.minecraft.core.entity.player.EntityPlayer;
 
 public class Alcarin extends Rune {

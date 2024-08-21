@@ -1,9 +1,8 @@
-package deus.rune.item.runes;
+package deus.rune.item.runes.todo;
 
 import deus.rune.interfaces.IEntityPlayerAccessor;
 import deus.rune.item.runes.core.Rune;
 import deus.rune.item.runes.core.SignalAccesor;
-import net.minecraft.core.entity.Entity;
 import net.minecraft.core.entity.player.EntityPlayer;
 import net.minecraft.core.player.inventory.InventoryPlayer;
 import net.minecraft.core.util.helper.DamageType;

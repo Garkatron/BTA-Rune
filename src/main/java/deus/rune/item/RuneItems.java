@@ -1,8 +1,13 @@
 package deus.rune.item;
 
-import deus.rune.item.runes.*;
+import deus.rune.item.runes.bloody.Heart;
+import deus.rune.item.runes.bloody.VengeanceHeart;
 import deus.rune.item.runes.core.ItemBloodyRune;
 import deus.rune.item.runes.core.ItemSoulRune;
+import deus.rune.item.runes.normal.*;
+import deus.rune.item.runes.soul.Berserker;
+import deus.rune.item.runes.soul.Nether;
+import deus.rune.item.runes.todo.FriendshipLigament;
 import deus.rune.util.StaticFieldsExtractor;
 import deus.rune.item.runes.core.ItemRune;
 import net.minecraft.core.item.Item;

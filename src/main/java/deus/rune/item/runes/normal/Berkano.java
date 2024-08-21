@@ -1,8 +1,6 @@
-package deus.rune.item.runes;
+package deus.rune.item.runes.normal;
 
-import deus.rune.Debug.Debug;
 import deus.rune.item.runes.core.Rune;
-import net.minecraft.core.entity.Entity;
 import net.minecraft.core.entity.player.EntityPlayer;
 
 public class Berkano extends Rune {

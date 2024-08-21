@@ -1,9 +1,8 @@
-package deus.rune.item.runes;
+package deus.rune.item.runes.normal;
 
 import deus.rune.interfaces.IEntityAccessor;
 import deus.rune.interfaces.IEntityPlayerAccessor;
 import deus.rune.item.runes.core.Rune;
-import net.minecraft.core.entity.Entity;
 import net.minecraft.core.entity.player.EntityPlayer;
 import net.minecraft.core.util.helper.DamageType;
 

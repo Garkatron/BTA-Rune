@@ -1,7 +1,11 @@
 package deus.rune.util;
 
-import deus.rune.item.runes.*;
+import deus.rune.item.runes.bloody.Heart;
+import deus.rune.item.runes.bloody.VengeanceHeart;
 import deus.rune.item.runes.core.Rune;
+import deus.rune.item.runes.normal.*;
+import deus.rune.item.runes.soul.Berserker;
+import deus.rune.item.runes.soul.Nether;
 
 import java.util.HashMap;
 import java.util.Map;

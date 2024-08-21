@@ -1,4 +1,4 @@
-package deus.rune.item.runes;
+package deus.rune.item.runes.bloody;
 
 import deus.rune.interfaces.IEntityPlayerAccessor;
 import deus.rune.item.runes.core.Rune;

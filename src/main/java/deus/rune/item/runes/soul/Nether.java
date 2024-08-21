@@ -1,9 +1,8 @@
-package deus.rune.item.runes;
+package deus.rune.item.runes.soul;
 
 import deus.rune.interfaces.IEntityAccessor;
 import deus.rune.interfaces.IEntityPlayerAccessor;
 import deus.rune.item.runes.core.Rune;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.entity.player.EntityPlayer;
 
 public class Nether extends Rune {
